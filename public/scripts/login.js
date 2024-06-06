@@ -1,16 +1,30 @@
-console.clear();
-
 const loginBtn = document.getElementById('login');
 const signupBtn = document.getElementById('signup');
 
 //0 will be for signUp 
 //1 for log in
 
-const loginButton = document.querySelectorAll(".submit-btn")[0];
-const signupButton = document.querySelectorAll(".submit-btn")[1];
+const signupButton = document.querySelectorAll(".submit-btn")[0];
+const loginButton = document.querySelectorAll(".submit-btn")[1];
 
 loginButton.addEventListener('click',(e)=>{
-	axios.get("/hell");
+	const mail = document.querySelectorAll(".loginInput")[0].value;
+	const pass = document.querySelectorAll(".loginInput")[1].value;
+	if(mail.length === 0 || pass.length === 0) {
+		console.log("Not vald credentials");
+	}
+	axios.post('/submit',{
+		email:mail,
+		password:pass
+	}).then(response => {
+		// assing token to session storage
+		// and redirect to reservation page
+		console.log("ok");
+		//will do something on success and failure
+	}).catch(err => {
+		console.log(err.message);
+		//print error message
+	})	
 });
 
 loginBtn.addEventListener('click', (e) => {

@@ -185,6 +185,7 @@ html,body {
 			}
 
 			.form-holder {
+				gap: 50px;
 				border-radius: 15px;
 				background-color: #fff;
 				border: 1px solid #eee;
