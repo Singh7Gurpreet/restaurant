@@ -7,7 +7,7 @@ const signupBtn = document.getElementById('signup');
 const signupButton = document.querySelectorAll(".submit-btn")[0];
 const loginButton = document.querySelectorAll(".submit-btn")[1];
 
-signupBtn.addEventListener('click',(err) => {
+signupButton.addEventListener('click',(err) => {
 	const name = document.querySelectorAll('.signupBtn')[0].value;
 	const email = document.querySelectorAll('.signupBtn')[1].value;
 	const pass = document.querySelectorAll('.signupBtn')[2].value;
@@ -15,16 +15,22 @@ signupBtn.addEventListener('click',(err) => {
 	if(email.length === 0 || pass.length === 0 || name.length === 0) {
 		console.log("Not vald credentials");
 	}
-
+	console.log("dsfsd");
 	axios.post('/signup',{
 		email:email,
 		password:pass,
 		name:name
 	}).then(response => {
+		if(response) {
+			console.log("Please check your mail");
+			window.alert("Your account has been created please login");
+		} else {
+			console.log("Already Exists");
+		}
 		// use logic to display account created please login to your account
 		console.log("Account created successfully ");
 	}).catch(err => {
-		window.alert("Account could not created");
+		window.alert("Already Exists");
 	})
 });
 
@@ -38,15 +44,11 @@ loginButton.addEventListener('click',(e)=>{
 		email:mail,
 		password:pass
 	}).then(response => {
-		//if reserved table direct to orders
-		// else takes to reservation page
-		console.log("ok");
-		//will do something on success and failure
+		sessionStorage.setItem('token',response.data);
+		window.location.href = '/reservation';
 	}).catch(err => {
-		// window.alert("Invalid credentials");
-		console.log(err.message);
-		//print error message
-	})	
+		window.alert("Invalid credentials");
+	});	
 });
 
 loginBtn.addEventListener('click', (e) => {

@@ -1,6 +1,13 @@
 const bcrypt = require('bcrypt');
 const crypto = require('crypto');
+const jwt = require('jsonwebtoken');
 const NewAccount = require('../../models/accounts');
+
+function generateToken(mail,pass) {
+    const user = {email:mail,password:pass};
+    let token = jwt.sign(user,process.env.SECRET_KEY);
+    return token; 
+}
 
 function mailSha(mail) {
     const hash = crypto.createHash('sha512');
@@ -46,14 +53,21 @@ async function createAccount(mail,pass,name) {
         salt:saltPass,
     });
     try{
-        await account.save();
+        const temp = await NewAccount.find({email:mail});
+        if ( temp.length === 1) {
+            return false;
+        }
+            await account.save();
+        return true;
     } catch(err) {
         throw new Error(`Something wrong in credentials: ${err.message}`);
     }
+    return false;
 }
 
 async function validateCredentials(mail,pass) {
     mail = mailSha(mail);
+    let token = null;
     try {
         const users = await NewAccount.find({email:mail});
         if(users.length === 0) {
@@ -63,7 +77,8 @@ async function validateCredentials(mail,pass) {
         hashedPassword = users[0].password;
         const matched = await bcrypt.compare(pass,hashedPassword);
         if(matched) {
-            //generateToken and send it back to user
+            token = generateToken(mail,pass);
+            return token;
         } else {
             console.log("Not matched");
             return null;
