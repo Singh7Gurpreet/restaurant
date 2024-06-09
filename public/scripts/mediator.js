@@ -3,7 +3,7 @@ const order = document.querySelector('.order');
 
 reservation.addEventListener('click',(event) => {
     const token = sessionStorage.getItem('key');
-    const url = `/reservation?token=${token}`;
+    const url = `/reservation`;
     console.log(`redirecting to ${url}`);
     window.location.href = url;
 });

@@ -15,7 +15,6 @@ signupButton.addEventListener('click',(err) => {
 	if(email.length === 0 || pass.length === 0 || name.length === 0) {
 		console.log("Not vald credentials");
 	}
-	console.log("dsfsd");
 	axios.post('/signup',{
 		email:email,
 		password:pass,
@@ -46,7 +45,7 @@ loginButton.addEventListener('click',(e)=>{
 	}).then(response => {
 		console.log(response.data);
 		document.cookie = `token=${response.data}`;
-		window.location.href = `/reservation`;
+		window.location.href = `/menu`;
 	}).catch(err => {
 		console.log(err);
 		window.alert("Invalid credentials");
