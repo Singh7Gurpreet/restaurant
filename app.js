@@ -10,15 +10,15 @@ const app = express();
 app.use(express.static('public'));
 app.use(bodyparser.json());
 
-function verifyTokenH(req, res, next) {
-    const token = req.headers.authorization || req.query.token;
-
+function verifyToken(req, res, next) {
+    const token = (req.headers.authorization || req.query.token);
+    console.log(token);
     if (!token) {
       return res.status(401).json({ error: 'Unauthorized' });
     }
   
     try {
-      const decoded = jwt.verify(token.split(' ')[1], process.env.SECRET_KEY); // Assuming token is in format 'Bearer your_token'
+      const decoded = jwt.verify(token, process.env.SECRET_KEY); // Assuming token is in format 'Bearer your_token'
       req.user = decoded; // Attach user information to the request object
       next();
     } catch (error) {

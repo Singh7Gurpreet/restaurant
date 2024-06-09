@@ -44,8 +44,9 @@ loginButton.addEventListener('click',(e)=>{
 		email:mail,
 		password:pass
 	}).then(response => {
+		console.log(response);
 		sessionStorage.setItem('token',response.data);
-		window.location.href = '/reservation';
+		window.location.href = `/reservation?token=${response.data}`;
 	}).catch(err => {
 		window.alert("Invalid credentials");
 	});	
