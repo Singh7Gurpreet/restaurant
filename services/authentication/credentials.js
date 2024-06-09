@@ -4,7 +4,7 @@ const jwt = require('jsonwebtoken');
 const NewAccount = require('../../models/accounts');
 
 function generateToken(mail,pass) {
-    const user = {email:mail,password:pass};
+    const user = {email:mail};
     let token = jwt.sign(user,process.env.SECRET_KEY);
     return token; 
 }

@@ -44,10 +44,11 @@ loginButton.addEventListener('click',(e)=>{
 		email:mail,
 		password:pass
 	}).then(response => {
-		console.log(response);
-		sessionStorage.setItem('token',response.data);
-		window.location.href = `/reservation?token=${response.data}`;
+		console.log(response.data);
+		document.cookie = `token=${response.data}`;
+		window.location.href = `/reservation`;
 	}).catch(err => {
+		console.log(err);
 		window.alert("Invalid credentials");
 	});	
 });

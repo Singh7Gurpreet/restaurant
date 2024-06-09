@@ -1,5 +1,6 @@
 const express = require('express');
 const path = require('path');
+const cookieParser = require('cookie-parser');
 const bodyparser = require('body-parser');
 const {connectionDb} = require('./database/setup');
 const {validateCredentials,createAccount} = require("./services/authentication/credentials");
@@ -8,11 +9,11 @@ const jwt = require('jsonwebtoken');
 
 const app = express();
 app.use(express.static('public'));
+app.use(cookieParser());
 app.use(bodyparser.json());
 
 function verifyToken(req, res, next) {
-    const token = (req.headers.authorization || req.query.token);
-    console.log(token);
+    const token = (req.cookies.token);
     if (!token) {
       return res.status(401).json({ error: 'Unauthorized' });
     }
@@ -68,7 +69,7 @@ app.get("/menu",(req,res) => {
 });
 
 app.get("/reservation",verifyToken,(req,res)=>{
-    res.sendFile(path.join(__dirname,"/public/reservationPage.html"));
+    res.sendFile(path.join(__dirname,"/public/menu.html"));
 });
 
 connectionDb().then( value => {
