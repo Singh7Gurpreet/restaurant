@@ -10,8 +10,8 @@ const app = express();
 app.use(express.static('public'));
 app.use(bodyparser.json());
 
-function verifyToken(req, res, next) {
-    const token = req.headers.authorization;
+function verifyTokenH(req, res, next) {
+    const token = req.headers.authorization || req.query.token;
 
     if (!token) {
       return res.status(401).json({ error: 'Unauthorized' });
@@ -61,6 +61,10 @@ app.post("/login",(req,res)=>{
         console.log(err.message);
         res.sendStatus(404);
     })
+});
+
+app.get("/menu",(req,res) => {
+    res.sendFile(path.join(__dirname,"/public/menu.html"));
 });
 
 app.get("/reservation",verifyToken,(req,res)=>{
