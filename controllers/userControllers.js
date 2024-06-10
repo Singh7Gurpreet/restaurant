@@ -41,7 +41,7 @@ function options(req,res,next) {
 }
 
 function reservationRequest(req,res,next) {
-    res.send("Helllo");
+    res.render(path.join(__dirname,"../views/reservation"));
 }
 
 function c() {

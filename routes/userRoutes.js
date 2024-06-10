@@ -7,6 +7,6 @@ router.get('/',userController.loginPage);
 router.post('/signup',userController.signUpRequest);
 router.post('/login',userController.loginRequest);
 router.get('/menu',userController.options);
-router.get('/reservation',verifyToken,userController.reservationRequest);
+router.get('/reservation',userController.reservationRequest);
 
 module.exports = {router};
