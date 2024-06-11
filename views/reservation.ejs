@@ -4,11 +4,41 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/styles/reservation.css">
-    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
-    <script src="/scripts/reservation.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.7.2/axios.min.js" integrity="sha512-JSCFHhKDilTRRXe9ak/FJ28dcpOJxzQaCd3Xg8MyF6XFjODhy/YMCM8HW0TFDckNHWUewW+kfvhin43hKtJxAw==" crossorigin="anonymous" referrerpolicy="no-referrer" defer></script>
+    <script src="/scripts/reservation.js" defer></script>
     <title>Document</title>
 </head>
 <body>
-
+<div class = "main">
+    <div class = "mainDropDown">
+        <div>
+            <select class = "select time">
+                <option disabled selected>Select Your Time</option>
+                <!-- Apply ejs over here to load available time slots -->
+                <% for(let i = 0; i < timeSlots.length; i++) { %>
+                    <option value= "<%=timeSlots[i]%>"> 
+                        <%=timeSlots[i]%> 
+                    </option>
+                <%}%>
+            </select>
+        </div>
+        <div>
+            <select class = "select day">
+                <option disabled selected>Select Your Day</option>
+                <!-- Apply ejs over here to load available time slots -->
+                <option value="21">21</option>
+                <option value="22">22</option>
+                <option value="23">23</option>
+                <option value="24">24</option>
+            </select>
+        </div>
+        <div>
+            <textarea name="" id=""></textarea>
+        </div>
+    </div>
+    <div class = "mainButton">
+        <button>Submit</button>
+    </div>
+</div>
 </body>
 </html>

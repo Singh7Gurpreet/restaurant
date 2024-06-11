@@ -41,7 +41,9 @@ function options(req,res,next) {
 }
 
 function reservationRequest(req,res,next) {
-    res.render(path.join(__dirname,"../views/reservation"));
+    res.render(path.join(__dirname,"../views/reservation"),{
+        timeSlots:[1,2,3,4,5,6,6,6,6,6,6,6,6,6]
+    });
 }
 
 function c() {
