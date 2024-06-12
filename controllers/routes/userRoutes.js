@@ -1,9 +1,9 @@
 const express = require('express');
 const router = express.Router();
-const {verifyToken} = require('../middleware/verification');
-const userController = require('../controllers/userControllers');
-const reservationController = require('../controllers/reservationController');
-const RestaurantTables = require('../models/Classes/RestaurantTables');
+const {verifyToken} = require('../../middleware/verification');
+const userController = require('../userControllers');
+const reservationController = require('../reservationController');
+const RestaurantTables = require('../../models/Classes/RestaurantTables');
 
 router.get('/',userController.loginPage);
 router.post('/signup',userController.signUpRequest);

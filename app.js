@@ -5,7 +5,7 @@ const bodyParser = require('body-parser');
 const {connectionDb} = require('./database/setup');
 const {validateCredentials,createAccount} = require("./services/authentication/credentials");
 const jwt = require('jsonwebtoken');
-const {router} = require('./routes/userRoutes');
+const {router} = require('./controllers/routes/userRoutes');
 
 const app = express();
 app.set('view engine', 'ejs');
