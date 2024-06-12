@@ -3,8 +3,7 @@ const router = express.Router();
 const path = require('path');
 
 const {generateTimeSlots,generateAvailableDates} = require("../services/dateTime/dayTimeGen");
-const RestaurantTables = require('../models/Classes/RestaurantTables');
-
+const {bookTable} = require('../models/booker');
 
 router.get('/',(req,res,next)=>{
     const timeSlots = generateTimeSlots();
@@ -17,8 +16,7 @@ router.get('/',(req,res,next)=>{
 
 router.post('/request',(req,res,next) => {
     try {
-        //was working on this just reminding my self :)
-        // reserveTable(req.body);
+        bookTable(req.body.time,req.body.day);
         res.sendStatus(200);
     } catch (error) {
         res.sendStatus(404);

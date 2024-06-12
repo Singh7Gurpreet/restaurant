@@ -78,7 +78,7 @@ class RestaurantTables {
         const temp = new RestaurantTables();
         const m = [];
         for(let i = 0; i < data.tables.length; i++ ){
-            m.push(Tables.parse(data.tables[i]));
+            m.push(Table.Table.parse(data.tables[i]));
         }
         temp.tables = m;
         return temp;

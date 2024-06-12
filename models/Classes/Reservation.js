@@ -35,11 +35,9 @@ class Reservations {
 
     static parse(data) {
         const nObject = new Reservations();
-        const temp = data.reservationsForDay;
         for(let i = 0; i < data.length; i++) {
-            nObject.reservationsForDay.push(Interval.parse(temp[i]));
+            nObject.reservationsForDay.push(Interval.parse(data[i]));
         }
-        console.log(nObject);
         return nObject;
     }
 }

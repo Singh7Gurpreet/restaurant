@@ -32,7 +32,6 @@ function generateAvailableDates() {
         let buffer = today.toDateString().split(' ');
         let temp = `${buffer[2]} ${buffer[1]}`;
         dates.push(temp);
-        console.log(temp);
     }
 
     return dates;

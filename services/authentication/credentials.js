@@ -1,7 +1,7 @@
 const bcrypt = require('bcrypt');
 const crypto = require('crypto');
 const jwt = require('jsonwebtoken');
-const NewAccount = require('../../models/accounts');
+const {Credentials} = require('../../models/schemas');
 
 function generateToken(mail,pass) {
     const user = {email:mail};
@@ -46,14 +46,14 @@ async function createAccount(mail,pass,name) {
         saltPass = y;
     });
     name = encryptName(name,`${saltPass}000`);
-    const account = new NewAccount({
+    const account = new Credentials({
         name,
         email:mail,
         password:pass,
         salt:saltPass,
     });
     try{
-        const temp = await NewAccount.find({email:mail});
+        const temp = await Credentials.find({email:mail});
         if ( temp.length === 1) {
             return false;
         }
@@ -69,7 +69,7 @@ async function validateCredentials(mail,pass) {
     mail = mailSha(mail);
     let token = null;
     try {
-        const users = await NewAccount.find({email:mail});
+        const users = await Credentials.find({email:mail});
         if(users.length === 0) {
             console.log("Does not exists");
             return null;

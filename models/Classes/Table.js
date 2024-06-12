@@ -40,7 +40,7 @@ class Table{
             table = new Table2();
         }
         table.id = data.id;
-        table.reservation = Reservations.parse(data.reservation);
+        table.reservation = Reservations.parse(data.reservation.reservationsForDay);
         return table;
     }
 }
