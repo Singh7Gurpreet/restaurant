@@ -2,9 +2,14 @@ const express = require('express');
 const router = express.Router();
 const path = require('path');
 
+const {generateTimeSlots,generateAvailableDates} = require("../services/dateTime/dayTimeGen");
+
 router.get('/',(req,res,next)=>{
+    const timeSlots = generateTimeSlots();
+    const dates = generateAvailableDates();
     res.render(path.join(__dirname,"../views/reservation"),{
-        timeSlots:[1,2,3,4,5,6,6,6,6,6,6,6,6,6]
+        timeSlots:timeSlots,
+        daySlots:dates
     });
 })
 

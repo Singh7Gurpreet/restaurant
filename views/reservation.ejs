@@ -26,10 +26,11 @@
             <select class = "select day">
                 <option disabled selected>Select Your Day</option>
                 <!-- Apply ejs over here to load available time slots -->
-                <option value="21">21</option>
-                <option value="22">22</option>
-                <option value="23">23</option>
-                <option value="24">24</option>
+                <% for(let i = 0; i < daySlots.length; i++) { %>
+                    <option value= "<%=daySlots[i]%>"> 
+                        <%=daySlots[i]%> 
+                    </option>
+                <%}%>
             </select>
         </div>
         <div>
