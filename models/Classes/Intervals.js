@@ -17,6 +17,14 @@ class Interval {
         if (interval1.start === interval2.start) return 0;
         return -1;
     }
+
+    toJSON() {
+        return {
+            start:this.start,
+            end:this.end,
+            id:this.id
+        }
+    }
 }
 
 

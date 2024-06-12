@@ -68,6 +68,15 @@ class RestaurantTables {
         }
         return -1;
     }
+
+    toJSON() {
+        return {
+            tables: this.tables.map(t => t.toJSON())
+        }
+    }
 }
+
+const t = new RestaurantTables();
+console.log(JSON.stringify(t).length);
 
 module.exports = RestaurantTables;

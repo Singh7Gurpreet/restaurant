@@ -1,9 +1,10 @@
 const Interval = require('./Intervals');
-const Reservation = require('./Reservation');
+const Reservations = require('./Reservation');
 
 class Tables{
-    constructor(members) {
+    constructor(members,id) {
         this.members = members;
+        this.reservation = new Reservations();
         this.id = id;
     }
     getMembers() {
@@ -19,6 +20,14 @@ class Tables{
             return false;
         this.reservation.insert(interval);
         return true;
+    }
+
+    toJSON() {
+        return {
+            members:this.members,
+            reservation:this.reservation,
+            id:this.id
+        }
     }
 }
 

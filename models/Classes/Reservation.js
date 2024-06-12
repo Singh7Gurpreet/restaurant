@@ -26,6 +26,14 @@ class Reservations {
     getReservations(){
         return this.reservationsForDay;
     }
+
+    toJSON () {
+        return {
+            reservationsForDay: this.reservationsForDay.map(interval => interval.toJSON())
+        }
+    }
 }
 
+const temp = new Reservations();
+console.log(JSON.stringify(temp));
 module.exports = Reservations;
