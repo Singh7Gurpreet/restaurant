@@ -1,16 +1,16 @@
 const Interval = require('./Intervals');
-const TablesClass = require('./Tables');
+const Table = require('./Table');
 
 class RestaurantTables {
     constructor() {
         this.tables =[];
         for(let i = 0; i < 10; i++) {
             if(i >= 0 && i < 5) {
-                this.tables.push(new TablesClass.Tables6(i));
+                this.tables.push(new Table.Table6(i));
             } else if (i >= 5 && i < 7  ) {
-                this.tables.push(new TablesClass.Tables4(i));
+                this.tables.push(new Table.Table4(i));
             } else {
-                this.tables.push(new TablesClass.Tables2(i));
+                this.tables.push(new Table.Table2(i));
             }
         }
     }
@@ -74,9 +74,15 @@ class RestaurantTables {
             tables: this.tables.map(t => t.toJSON())
         }
     }
+    static parse(data) {
+        const temp = new RestaurantTables();
+        const m = [];
+        for(let i = 0; i < data.tables.length; i++ ){
+            m.push(Tables.parse(data.tables[i]));
+        }
+        temp.tables = m;
+        return temp;
+    }
 }
-
-const t = new RestaurantTables();
-console.log(JSON.stringify(t).length);
 
 module.exports = RestaurantTables;

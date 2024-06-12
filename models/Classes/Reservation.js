@@ -32,8 +32,16 @@ class Reservations {
             reservationsForDay: this.reservationsForDay.map(interval => interval.toJSON())
         }
     }
+
+    static parse(data) {
+        const nObject = new Reservations();
+        const temp = data.reservationsForDay;
+        for(let i = 0; i < data.length; i++) {
+            nObject.reservationsForDay.push(Interval.parse(temp[i]));
+        }
+        console.log(nObject);
+        return nObject;
+    }
 }
 
-const temp = new Reservations();
-console.log(JSON.stringify(temp));
 module.exports = Reservations;

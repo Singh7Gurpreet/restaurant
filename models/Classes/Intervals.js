@@ -25,6 +25,9 @@ class Interval {
             id:this.id
         }
     }
+    static parse(data) {
+        return new Interval(data.start,data.end,data.id);
+    }
 }
 
 

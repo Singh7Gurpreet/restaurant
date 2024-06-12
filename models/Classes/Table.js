@@ -1,11 +1,11 @@
 const Interval = require('./Intervals');
 const Reservations = require('./Reservation');
 
-class Tables{
+class Table{
     constructor(members,id) {
         this.members = members;
-        this.reservation = new Reservations();
         this.id = id;
+        this.reservation = new Reservations();
     }
     getMembers() {
         return this.members;
@@ -25,28 +25,42 @@ class Tables{
     toJSON() {
         return {
             members:this.members,
-            reservation:this.reservation,
-            id:this.id
+            id:this.id,
+            reservation:this.reservation
         }
+    }
+
+    static parse(data) {
+        let table;
+        if(data.members === 6) {
+            table = new Table6();
+        } else if(data.members === 4) {
+            table = new Table4();
+        } else {
+            table = new Table2();
+        }
+        table.id = data.id;
+        table.reservation = Reservations.parse(data.reservation);
+        return table;
     }
 }
 
-class Tables2 extends Tables {
+class Table2 extends Table {
     constructor(id) {
         super(2,id);
     }
 }
 
-class Tables4 extends Tables {
+class Table4 extends Table {
     constructor(id) {
         super(4,id);
     }
 }
 
-class Tables6 extends Tables {
+class Table6 extends Table {
     constructor(id) {
         super(6,id);
     }
 }
 
-module.exports = {Tables,Tables2,Tables4,Tables6};
+module.exports = {Table,Table2,Table4,Table6};
