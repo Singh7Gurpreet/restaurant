@@ -18,6 +18,14 @@ html,body {
     justify-content: center;
 }
 
+.day{
+    background-image: url("https://th.bing.com/th/id/R.9c5f8a86c382722204432fa0216e1457?rik=yFliUVUPsinw%2bA&riu=http%3a%2f%2fclipart-library.com%2fimg1%2f848116.png&ehk=QLiiApfj%2b7ARJhspeiceBWqLVq4a7vKQAQm%2br0PItGI%3d&risl=&pid=ImgRaw&r=0");
+}
+
+.time {
+    background-image: url("https://static.vecteezy.com/system/resources/previews/009/342/688/original/clock-icon-clipart-design-illustration-free-png.png");
+}
+
 .select {
     padding: 8px 12px;
     padding-right: 80px;
@@ -33,7 +41,6 @@ html,body {
     -webkit-appearance: none;
     -moz-appearance: none;
     /* leaving it for some other idea or it looks good as it is minimilistic */
-    background-image: url("https://static.vecteezy.com/system/resources/previews/009/342/688/original/clock-icon-clipart-design-illustration-free-png.png");
     background-size: 20px;
     background-position: right 10px top 50%;
     background-repeat: no-repeat;

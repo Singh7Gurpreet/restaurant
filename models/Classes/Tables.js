@@ -2,8 +2,9 @@ const Interval = require('./Intervals');
 const Reservation = require('./Reservation');
 
 class Tables{
-    constructor(members) {
+    constructor(members,id) {
         this.members = members;
+        this.id = id;
         const dt = new Date();
         const formattedDate = `${dt.getDay()}/${dt.getMonth()/dt.getFullYear()}`;
         this.reservation = new Reservation(formattedDate);
@@ -25,20 +26,20 @@ class Tables{
 }
 
 class Tables2 extends Tables {
-    constructor() {
-        super(2);
+    constructor(id) {
+        super(2,id);
     }
 }
 
 class Tables4 extends Tables {
-    constructor() {
-        super(4);
+    constructor(id) {
+        super(4,id);
     }
 }
 
 class Tables6 extends Tables {
-    constructor() {
-        super(6);
+    constructor(id) {
+        super(6,id);
     }
 }
 

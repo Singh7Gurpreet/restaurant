@@ -3,6 +3,8 @@ const router = express.Router();
 const path = require('path');
 
 const {generateTimeSlots,generateAvailableDates} = require("../services/dateTime/dayTimeGen");
+const {reserveTable} = require('../models/reservationHelper');
+
 
 router.get('/',(req,res,next)=>{
     const timeSlots = generateTimeSlots();
@@ -11,11 +13,16 @@ router.get('/',(req,res,next)=>{
         timeSlots:timeSlots,
         daySlots:dates
     });
-})
+});
 
 router.post('/request',(req,res,next) => {
-    console.log(req.body);
-    res.sendStatus(200);
-})
+    try {
+        //was working on this just reminding my self :)
+        reserveTable(req.body);
+        res.sendStatus(200);
+    } catch (error) {
+        res.sendStatus(404);
+    }
+});
 
 module.exports = router;
