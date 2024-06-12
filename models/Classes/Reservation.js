@@ -1,8 +1,7 @@
 const Interval = require('./Intervals');
 
 class Reservations {
-    constructor (date) {
-        this.date = date;
+    constructor () {
         this.reservationsForDay = [];
     }
 

@@ -2,12 +2,9 @@ const Interval = require('./Intervals');
 const Reservation = require('./Reservation');
 
 class Tables{
-    constructor(members,id) {
+    constructor(members) {
         this.members = members;
         this.id = id;
-        const dt = new Date();
-        const formattedDate = `${dt.getDay()}/${dt.getMonth()/dt.getFullYear()}`;
-        this.reservation = new Reservation(formattedDate);
     }
     getMembers() {
         return this.members;
