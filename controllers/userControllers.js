@@ -44,10 +44,7 @@ function reservationRequest(req,res,next) {
     res.render(path.join(__dirname,"../views/reservation"),{
         timeSlots:[1,2,3,4,5,6,6,6,6,6,6,6,6,6]
     });
-}
-
-function c() {
-    console.log("Hi am");
+    res.send()
 }
 
 module.exports = {
@@ -55,7 +52,6 @@ module.exports = {
     loginPage,
     loginRequest,
     signUpRequest,
-    options,
-    c
+    options
 }
 
