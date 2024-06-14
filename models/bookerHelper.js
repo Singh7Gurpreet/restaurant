@@ -4,13 +4,13 @@ const Interval = require('./Classes/Intervals');
 const RestaurantTables = require('./Classes/RestaurantTables');
 const uri = process.env.DB_URI;
 
-async function insert(restaurantObject,time) {
+function insert(restaurantObject,time) {
     const timeSlot = new Interval(time,(time + 200),1);
     const tableId = restaurantObject.book(timeSlot,6);
     if( tableId != -1) {
         return tableId;
     } else {
-        throw Error("Time slot not available");
+        return -1;
     }
 }
 
@@ -34,11 +34,7 @@ async function bookInDatabase(time, date) {
         }
         // console.log(JSON.stringify(restaurantObject));
         // Insert new booking into restaurantObject
-        try { 
-            await insert(restaurantObject, time);
-        } catch (error) {
-            console.log(error);
-        }
+        let retValue = insert(restaurantObject, time);
         const buffer = JSON.stringify(restaurantObject);
         // console.log(buffer);
         // Save updated reservation data
@@ -47,9 +43,10 @@ async function bookInDatabase(time, date) {
             reservations: buffer
         });
         await updatedReservation.save();
-        console.log('Booking saved successfully.');
+        return (retValue !== -1);
     } catch (error) {
         console.error('Error booking in database:\n', error);
+        throw error;
     }
 }
 

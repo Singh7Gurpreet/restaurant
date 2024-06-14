@@ -1,9 +1,9 @@
 const path = require('path');
-const {validateCredentials,createAccount} = require('../services/authentication/credentials');
+const {validateCredentials,createAccount,getName} = require('../services/authentication/credentials');
 
 
 function loginPage(req,res,next) {
-    res.sendFile(path.join(__dirname,"../public/login.html"));
+    res.sendFile(path.join(__dirname,"../views/public/login.html"));
 }
 function signUpRequest(req,res,next) {
     const mail = req.body.email;
@@ -22,6 +22,7 @@ function signUpRequest(req,res,next) {
         res.sendStatus(500);
     })
 }
+
 function loginRequest(req,res,next) {
     const mail = req.body.email;
     const pass = req.body.password;
@@ -36,19 +37,14 @@ function loginRequest(req,res,next) {
         res.sendStatus(404);
     })
 }
-function options(req,res,next) {
-    res.sendFile(path.join(__dirname,"../public/menu.html"));
-}
-
-function reservationRequest(req,res,next) {
-    res.render(path.join(__dirname,"../views/reservation"),{
-        timeSlots:[1,2,3,4,5,6,6,6,6,6,6,6,6,6]
+async function options(req,res,next) {
+    const name = await getName(req.cookies['token']);
+    res.render(path.join(__dirname,"../views/public/menu.ejs"),{
+        name:name
     });
-    res.send()
 }
 
 module.exports = {
-    reservationRequest,
     loginPage,
     loginRequest,
     signUpRequest,

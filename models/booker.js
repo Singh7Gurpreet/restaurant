@@ -17,20 +17,22 @@ function extractDay(day) {
 }
 
 //handles http request function
-async function bookTable (time,day) {
-    const t = extractTime(time);
-    const d = extractDay(day);
+async function bookTable (timeData,dayData) {
+    const time = extractTime(timeData);
+    const day = extractDay(dayData);
     
-    if(t < 900 || t > 2100) {
+    if(time < 900 || time > 2100) {
         throw Error("Not a valid time");
     }
     
-    bookInDatabase(t,d).then(res => {
-        return res;
-    }).catch(err => {
+    try{
+        const retValue = await bookInDatabase(time,day);
+        return retValue;
+    }
+   catch(err) {
         console.log(err.message);
         throw Error("Something wrong with book function");
-    }); 
+   } 
 }
 
 module.exports = {bookTable};

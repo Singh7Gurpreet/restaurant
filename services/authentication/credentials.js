@@ -62,7 +62,16 @@ async function createAccount(mail,pass,name) {
     } catch(err) {
         throw new Error(`Something wrong in credentials: ${err.message}`);
     }
-    return false;
+}
+
+async function getName(token) {
+    let mail = jwt.verify(token,process.env.SECRET_KEY).email;
+    try{
+        const users = await Credentials.find({email:mail});
+        return await decrypt(users[0].name,`${users[0].salt}000`);
+    } catch(error) {
+        console.log(error);
+    }
 }
 
 async function validateCredentials(mail,pass) {
@@ -90,4 +99,4 @@ async function validateCredentials(mail,pass) {
     return false;
 }
 
-module.exports = {validateCredentials,createAccount};
+module.exports = {validateCredentials,createAccount,getName};

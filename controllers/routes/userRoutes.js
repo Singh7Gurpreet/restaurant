@@ -3,7 +3,7 @@ const router = express.Router();
 const {verifyToken} = require('../../middleware/verification');
 const userController = require('../userControllers');
 const reservationController = require('../reservationController');
-const RestaurantTables = require('../../models/Classes/RestaurantTables');
+const {getName} = require('../../services/authentication/credentials');
 
 router.get('/',userController.loginPage);
 router.post('/signup',userController.signUpRequest);

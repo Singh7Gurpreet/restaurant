@@ -9,7 +9,7 @@ const {router} = require('./controllers/routes/userRoutes');
 
 const app = express();
 app.set('view engine', 'ejs');
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'views/public')));
 app.use(cookieParser());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());

@@ -5,9 +5,9 @@ class RestaurantTables {
     constructor() {
         this.tables =[];
         for(let i = 0; i < 10; i++) {
-            if(i >= 0 && i < 5) {
+            if(i >= 0 && i <= 5) {
                 this.tables.push(new Table.Table6(i));
-            } else if (i >= 5 && i < 7  ) {
+            } else if (i > 5 && i <= 7  ) {
                 this.tables.push(new Table.Table4(i));
             } else {
                 this.tables.push(new Table.Table2(i));
