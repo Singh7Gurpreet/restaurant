@@ -1,4 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+
 html,body {
+    font-family: 'Inter';
     height: 100vh;
     padding: 0;
     margin: 0;
@@ -44,6 +47,17 @@ html,body {
     justify-content: center;
 }
 
+textarea {
+    background-color: rgba(0,0,0,0);
+    border: 1px solid rgb(180, 180, 180);
+    height: 80px;
+    outline: none;
+}
+
+textarea:active {
+    outline: none;
+}
+
 .day{
     background-image: url("https://th.bing.com/th/id/R.9c5f8a86c382722204432fa0216e1457?rik=yFliUVUPsinw%2bA&riu=http%3a%2f%2fclipart-library.com%2fimg1%2f848116.png&ehk=QLiiApfj%2b7ARJhspeiceBWqLVq4a7vKQAQm%2br0PItGI%3d&risl=&pid=ImgRaw&r=0");
 }
@@ -57,7 +71,7 @@ html,body {
     padding-right: 80px;
     color: #333333;
     background-color: #eeeeee;
-    border: 1px solid #dddddd;
+    border: none;
     cursor: pointer;
     border-radius: 5px;
 
@@ -72,12 +86,32 @@ html,body {
     background-repeat: no-repeat;
 }
 
+.select {
+    background-color: rgba(255, 255, 255, 0);
+    border-bottom: 2px solid black;
+}
+
 .select:focus,
 .select:hover{
     outline: none;
-    border: 1px solid #bbbbbb;
+    border: none
 }
 
 .select option {
     background: #ffffff;
+}
+
+button{
+    height: 40px;
+    padding: 0 30px;
+    border-radius: 20px;
+    
+    background: linear-gradient(to right, #ddc78a,#fcfdef );
+    font-size: 18px;
+    border: none;
+}
+
+button:hover {
+    background: #fcfdef;
+    
 }
