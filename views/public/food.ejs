@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./styles/foodMain.css">
     <link rel="stylesheet" href="./styles/foodProduct.css">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js" defer></script>
     <script src="./scripts/foodCart.js" defer></script>
     <title>Document</title>
 </head>
@@ -20,6 +21,7 @@
         </div>
     </header>
     <main>
+      <div class = "bg"></div>
         <div class = "food-cards">
           <% for(let i = 0; i < data.length; i++) { %>
         <div class="container page-wrapper">
@@ -40,10 +42,10 @@
                       <div class="h-bg-inner"></div>
                     </div>
                     <!--// needs to add for admin backend creation -->
-                    <a class="cart" data-foodId="<%=data[i].hell%>">
+                    <a class="cart">
                       <span class="price"><%= data[i].price%></span>
                       <span class="add-to-cart">
-                        <span class="txt">Add in cart</span>
+                        <span class="txt" data-foodId="<%=data[i].hell%>">Add in cart</span>
                       </span>
                     </a>
                   </div>
