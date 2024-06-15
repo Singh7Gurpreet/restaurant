@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./styles/foodMain.css">
     <link rel="stylesheet" href="./styles/foodProduct.css">
+    <script src="./scripts/foodCart.js" defer></script>
     <title>Document</title>
 </head>
 <body>
@@ -38,8 +39,8 @@
                     <div class="h-bg">
                       <div class="h-bg-inner"></div>
                     </div>
-          
-                    <a class="cart" href="#">
+                    <!--// needs to add for admin backend creation -->
+                    <a class="cart" data-foodId="<%=data[i].hell%>">
                       <span class="price"><%= data[i].price%></span>
                       <span class="add-to-cart">
                         <span class="txt">Add in cart</span>
