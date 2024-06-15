@@ -1,0 +1,30 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+
+.main_header {
+    height: 40px;
+    display: flex;
+    background-color: #bbbbbb;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10px; /* Adjusted padding */
+    width: calc(100% - 20px); /* Adjusted width with calc() to accommodate padding */
+    border-bottom: 1px solid #ccc; /* Adding a border for clarity */
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000; /* Ensure the header is above other content if necessary */
+}
+
+.main_header--cart img {
+    height: 25px;
+    width: 25px;
+}
+
+.food-cards{
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+}

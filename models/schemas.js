@@ -30,6 +30,22 @@ const new_reservation = new mongoose.Schema({
     }
 });
 
+const food = new mongoose.Schema({
+    name:{
+        type:String,
+        require:true
+    },
+    image:{
+        type:String,
+        require:true
+    },
+    price:{
+        type:String,
+        require:true
+    }
+})
+
 const Credentials = mongoose.model('credentials',new_credentials);
 const Reservations = mongoose.model('reservations',new_reservation);
-module.exports = {Credentials,Reservations};
+const Food = mongoose.model('Food',food);
+module.exports = {Credentials,Reservations,Food};

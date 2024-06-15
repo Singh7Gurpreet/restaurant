@@ -9,5 +9,8 @@ reservation.addEventListener('click',(event) => {
 });
 
 order.addEventListener('click',(event) => {
-    console.log("clicked for taking orders");
-})
+    const token = sessionStorage.getItem('key');
+    const url = `/order`;
+    console.log(`redirecting to ${url}`);
+    window.location.href = url;
+});

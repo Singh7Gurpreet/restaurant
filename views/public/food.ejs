@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./styles/foodMain.css">
+    <link rel="stylesheet" href="./styles/foodProduct.css">
+    <title>Document</title>
+</head>
+<body>
+    <header>
+        <div class = "main_header">
+            <div class = "main_header--name">
+                <p>Tasty Bits</p>
+            </div>
+            <div class = "main_header--cart">
+                <img src="https://images.designtrends.com/wp-content/uploads/2015/11/27111316/Shopping-Cart-Icons35.png" alt="">
+            </div>
+        </div>
+    </header>
+    <main>
+        <div class = "food-cards">
+          <% for(let i = 0; i < data.length; i++) { %>
+        <div class="container page-wrapper">
+            <div class="page-inner">
+              <div class="row">
+                <div class="el-wrapper">
+                  <div class="box-up">
+                    <img class="img" src="<%= data[i].image%> " alt="">
+                    <div class="img-info">
+                      <div class="info-inner">
+                        <span class="p-name"><%= data[i].name %> </span>
+                      </div>
+                    </div>
+                  </div>
+          
+                  <div class="box-down">
+                    <div class="h-bg">
+                      <div class="h-bg-inner"></div>
+                    </div>
+          
+                    <a class="cart" href="#">
+                      <span class="price"><%= data[i].price%></span>
+                      <span class="add-to-cart">
+                        <span class="txt">Add in cart</span>
+                      </span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <% } %>
+        </div>
+    </main>    
+</body>
+</html>
