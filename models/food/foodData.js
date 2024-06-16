@@ -1,11 +1,9 @@
 const {Food} = require('../schemas');
+const fs = require('fs');
 
 async function getFood() {
     try{
         const data = await Food.find({});
-        for(let i = 0; i < 5;i++) {
-            data[i].hell = i;
-        }
         return data;
     } catch(Err) {
         throw Err;

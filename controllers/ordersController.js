@@ -5,6 +5,7 @@ const {getFood} = require('../models/food/foodData')
 
 router.get('/',async (req,res,next) => {
     const foodItems = await getFood();
+    console.log(foodItems[0]);
     res.render(path.join(__dirname,'../views/public/food.ejs'),{
         data:foodItems
     });
@@ -16,8 +17,7 @@ router.post('/cart',async (req,res,next) => {
 });
 
 router.get('/cart',(req,res)=>{
-    console.log("fdss");
-    res.sendStatus(200);
+    res.render(path.join(__dirname,'../views/public/cart.ejs'));
 });
 
 module.exports = router;

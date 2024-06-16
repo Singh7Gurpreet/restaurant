@@ -31,6 +31,10 @@ const new_reservation = new mongoose.Schema({
 });
 
 const food = new mongoose.Schema({
+    id:{
+        type:String,
+        require:true
+    },
     name:{
         type:String,
         require:true
@@ -43,7 +47,7 @@ const food = new mongoose.Schema({
         type:String,
         require:true
     }
-})
+});
 
 const Credentials = mongoose.model('credentials',new_credentials);
 const Reservations = mongoose.model('reservations',new_reservation);
