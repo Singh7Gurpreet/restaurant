@@ -1,23 +1,30 @@
 const express = require('express');
 const router = express.Router();
 const path = require('path');
-const {getFood} = require('../models/food/foodData')
+const {getFood,getFoodById,renderData} = require('../models/food/foodData')
 
 router.get('/',async (req,res,next) => {
     const foodItems = await getFood();
-    console.log(foodItems[0]);
     res.render(path.join(__dirname,'../views/public/food.ejs'),{
         data:foodItems
     });
 });
 
 router.post('/cart',async (req,res,next) => {
-    console.log(req.body);
+
+    req.session.cart = req.body.items;
     res.sendStatus(200);
 });
 
-router.get('/cart',(req,res)=>{
-    res.render(path.join(__dirname,'../views/public/cart.ejs'));
+router.get('/cart',async (req,res)=>{
+    try {
+        const dataToBeRendered = await renderData(req.session.cart);
+        res.render(path.join(__dirname,'../views/public/cart.ejs'),{
+            data:dataToBeRendered
+        });
+    } catch(err) {
+        console.log(err);
+    }
 });
 
 module.exports = router;
