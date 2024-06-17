@@ -22,6 +22,7 @@ async function getFoodById(id) {
 
 async function renderData(requestData) {
     const result = [];
+    console.log(requestData);
     try{
     const data = JSON.parse(requestData);
     for(let i = 0; i < data.length; i++) {
