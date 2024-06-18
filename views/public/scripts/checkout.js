@@ -1,9 +1,8 @@
 const btn = document.querySelector('button');
 
 btn.addEventListener('click',(event)=>{
-    console.log("clicked");
     axios.get('/payment').then(res => {
-        console.log(res);
+        window.location.replace(res.data);
     }).catch(err => {
         console.log(err);
     });

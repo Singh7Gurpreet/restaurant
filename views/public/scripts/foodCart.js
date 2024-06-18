@@ -10,8 +10,7 @@ if(localStorage.getItem("cart") !== undefined) {
     try{
         const data = JSON.parse(localStorage.getItem("cart"));
         const amt = +localStorage.getItem("totalAmount");
-        for(let i = 0; i < data.length; i++) {
-            Object.assign(data[i][0],[...cart][0]);
+        for(let i = 0; i < data.length; i++) {       
             cart.set(data[i][0],data[i][1]);
         }
         totalAmount = amt;
@@ -34,7 +33,6 @@ img.addEventListener('click',(event) => {
 //can be imporved by sending all data together at once instead of one by one
 for(let i = 0; i < anchorTag.length;i++) {
     anchorTag[i].addEventListener('click',(event)=> {
-
         if(!cart.has(anchorTag[i].dataset)) {
             cart.set(anchorTag[i].dataset,1);
         } else {
